@@ -1,4 +1,5 @@
 import boom from "src/assets/imgs/boom.png";
+import boomWav from "src/assets/sounds/boom.wav";
 
 export class Explosion {
   x: number;
@@ -11,11 +12,13 @@ export class Explosion {
   width = this.spriteWidth * 0.7;
   height = this.spriteHeight * 0.7;
   image = new Image();
+  sound = new Audio();
 
   constructor(x: number, y: number) {
     // this.x = x - this.width / 2; // Centerilize animation horizontally
     // this.y = y - this.height / 2; // Centerilize animation vertically
     this.image.src = boom;
+    this.sound.src = boomWav;
 
     // When rotate, center image in draw method
     this.x = x;
@@ -23,6 +26,8 @@ export class Explosion {
   }
 
   update() {
+    if (this.frame === 0) this.sound.play();
+
     this.timer++;
 
     if (this.timer % 10 === 0) {
