@@ -1,5 +1,6 @@
 import "src/index.css";
 import { canvas, ctx } from "src/components/canvas";
+import { header } from "./components/header";
 import { Explosion } from "src/classes/Explosion";
 
 canvas.width = 500;
@@ -30,6 +31,7 @@ function boomAnimation(e: MouseEvent, canvasPos: DOMRect) {
 }
 
 window.addEventListener("load", () => {
+  document.body.appendChild(header);
   document.body.appendChild(canvas);
   const canvasPosition = canvas.getBoundingClientRect();
 
